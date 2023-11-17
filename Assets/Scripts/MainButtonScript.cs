@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
-public class MainButtonScript : MonoBehaviour
+public class MainButtonScript : MonoBehaviour, ISelectHandler
 {
     public DataScript data;
 
@@ -10,7 +11,6 @@ public class MainButtonScript : MonoBehaviour
         switch (SceneManager.GetActiveScene().buildIndex)
         {
             case 1:
-                data.CurrentTopicIndex = transform.GetSiblingIndex();
                 SceneManager.LoadScene(6);
                 return;
             case 6:
@@ -18,4 +18,11 @@ public class MainButtonScript : MonoBehaviour
                 return;
         }
     }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            data.S1ItemIndex = transform.GetSiblingIndex();
+    }
+
 }

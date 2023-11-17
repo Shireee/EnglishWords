@@ -22,7 +22,12 @@ public class LearnScript : MonoBehaviour
             b.transform.localScale = Vector2.one;
         }
         var es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-        es.SetSelectedGameObject(transform.GetChild(0).gameObject);
+        es.SetSelectedGameObject(transform.GetChild(data.S1ItemIndex).gameObject);
+        // 1.2.5
+        var scrollbar = GameObject.Find("Scrollbar Vertical").GetComponent<Scrollbar>();
+        scrollbar.value = data.S1ScrollbarValue;
+        scrollbar.onValueChanged.AddListener(v => data.S1ScrollbarValue = v);
+
     }
     void OnValueChangeHandler(int i)
     {

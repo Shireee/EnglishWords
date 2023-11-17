@@ -7,9 +7,9 @@ public class Learn2Script : MonoBehaviour
     public Button mainButton;
     void Start()
     {
-        data.GetWords(data.CurrentTopicIndex);
+        data.GetWords(data.S1ItemIndex);
         var hText = GameObject.Find("HText").GetComponent<Text>();
-        hText.text = data.Topic(data.CurrentTopicIndex);
+        hText.text = data.Topic(data.S1ItemIndex);
         for (int i = 0; i < data.WordCount; i++)
         {
             var b = Instantiate(mainButton);

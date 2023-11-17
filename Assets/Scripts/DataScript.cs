@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class DataScript : ScriptableObject
 {
     [SerializeField] int level;
-    public int CurrentTopicIndex;
     [SerializeField] List<string> data;
     [SerializeField] List<string> topics;
     [SerializeField] List<WordInfo> words;
@@ -70,6 +69,7 @@ public class DataScript : ScriptableObject
         audio.Play();
     }
 
+    // nav 1.2.4
     public void SetNavigationDown(Selectable from, Selectable to)
     {
         var nav = from.navigation;
@@ -77,4 +77,18 @@ public class DataScript : ScriptableObject
         from.navigation = nav;
     }
 
+    // Save topic for S1Learn 1.2.5
+
+    [SerializeField] int[] itemIndex = new int[4];
+    [SerializeField] float[] scrollbarValue = new float[4] { 1, 1, 1, 1 };
+    public int S1ItemIndex
+    {
+        get => itemIndex[level];
+        set => itemIndex[level] = value;
+    }
+    public float S1ScrollbarValue
+    {
+        get => scrollbarValue[level];
+        set => scrollbarValue[level] = value;
+    }
 }
