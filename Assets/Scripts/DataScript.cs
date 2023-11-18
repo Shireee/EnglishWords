@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
-using UnityEditor.PackageManager;
+using System.Text.RegularExpressions;
 
 [CreateAssetMenu(fileName = "GameData", menuName = "Game Data", order = 51)]
 public class DataScript : ScriptableObject
@@ -20,6 +19,12 @@ public class DataScript : ScriptableObject
     int ppredInd;
     System.Random r = new System.Random();
     List<int> testInd = new List<int>();
+
+    // option 1 
+    public bool OptAudioEnRu;
+
+    // option 2
+    public int OptTopicName;
 
 
     [System.Serializable]
@@ -51,7 +56,15 @@ public class DataScript : ScriptableObject
         .Where(e => e.StartsWith((newLevel + 1) + ".")));
     }
     public int TopicCount { get => topics.Count; }
-    public string Topic(int i) => topics[i].Remove(0, 2);
+    public string Topic(int i)
+    {
+        string s = topics[i].Remove(0, 2);
+        if (OptTopicName == 0 || level == 3)
+            return s;
+        var m = Regex.Match(s, @"(\d\d\.)(.*) \((.*)\)");
+        return m.Groups[1].Value + m.Groups[OptTopicName + 1].Value;
+    }
+
 
     void Reset() => Awake();
 
@@ -267,6 +280,10 @@ public class DataScript : ScriptableObject
             for (int i = 1; i < 6; i++)
                 labels[i] = words[testInd[i]].Ru;
         }
+
+        if (TestType == 2 || OptAudioEnRu)
+            PlayAudio(testInd[0]);
+
         return true;
     }
 
