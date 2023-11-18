@@ -105,6 +105,7 @@ public class DataScript : ScriptableObject
     }
 
     public int TestType;
+
     [SerializeField] string[] testTopics = new string[4] { "1", "1", "1", "1" };
 
     public SortedSet<int> TestTopics
