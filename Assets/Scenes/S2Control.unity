@@ -1869,7 +1869,7 @@ GameObject:
   - component: {fileID: 1444204449}
   - component: {fileID: 1444204450}
   m_Layer: 5
-  m_Name: Toggle (2)
+  m_Name: Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2377,7 +2377,7 @@ GameObject:
   - component: {fileID: 2131012265}
   - component: {fileID: 2131012266}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
