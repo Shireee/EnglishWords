@@ -26,6 +26,8 @@ public class DataScript : ScriptableObject
     // option 2
     public int OptTopicName;
 
+    // option 3
+    public int OptVolume = 10;
 
     [System.Serializable]
     public struct WordInfo
@@ -87,8 +89,8 @@ public class DataScript : ScriptableObject
     public void PlayAudio(int wordIndex)
     {
         var audio = Camera.main.GetComponent<AudioSource>();
-        audio.clip = Resources.Load<AudioClip>("Sounds/"
-        + words[wordIndex].Au);
+        audio.clip = Resources.Load<AudioClip>("Sounds/" + words[wordIndex].Au);
+        audio.volume = OptVolume / 10.0f;
         audio.Play();
     }
 
