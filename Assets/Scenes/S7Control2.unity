@@ -1486,7 +1486,7 @@ GameObject:
   - component: {fileID: 1176900489}
   - component: {fileID: 1176900488}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1768,6 +1768,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 692109774579939230, guid: 61c1ef1ac4cd7b543a2a5e6813d2e95e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1616005825}
+    - targetCorrespondingSourceObject: {fileID: 692109774579939230, guid: 61c1ef1ac4cd7b543a2a5e6813d2e95e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1616005826}
   m_SourcePrefab: {fileID: 100100000, guid: 61c1ef1ac4cd7b543a2a5e6813d2e95e, type: 3}
 --- !u!224 &1616005823 stripped
 RectTransform:
@@ -1805,6 +1808,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1616005826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616005824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c0fa6963141f54a841346733dfc162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 6f8f5f1f657ba4142bb007f0c0845f5a, type: 2}
 --- !u!1 &1826333439
 GameObject:
   m_ObjectHideFlags: 0
