@@ -8,12 +8,26 @@ public class HeaderScript : MonoBehaviour
 {
     Button lBut, rBut;
     int curInd;
+    public DataScript data;
+
+
     void Start()
     {
         lBut = transform.GetChild(0).GetComponent<Button>();
         rBut = transform.GetChild(1).GetComponent<Button>(); // getting first child !guide error
         curInd = SceneManager.GetActiveScene().buildIndex;
     }
+
+    // saving preferences
+    void OnDestroy()
+    {
+        if (data != null)
+        {
+            data.SavePrefs();
+            print("save");
+        }
+    }
+
     void Update()
     {
         if (!Input.anyKeyDown)
