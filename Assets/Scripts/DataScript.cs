@@ -29,6 +29,36 @@ public class DataScript : ScriptableObject
     // option 3
     public int OptVolume = 10;
 
+    // 1.4
+    public Button mainButton;
+
+    void LoadPrefabs()
+    {
+        mainButton = Resources.Load<GameObject>("Prefabs/MainButton")
+        .GetComponent<Button>();
+    }
+
+    public int OptMainButtonFontSize
+    {
+        get => mainButton.GetComponentInChildren<Text>().fontSize;
+        set => mainButton.GetComponentInChildren<Text>().fontSize = value;
+    }
+    public int GetHeight(Component comp) =>
+    (int)comp.GetComponent<RectTransform>().sizeDelta.y;
+    public void SetHeight(Component comp, int value)
+    {
+        RectTransform rt = comp.GetComponent<RectTransform>();
+        Vector2 sd = rt.sizeDelta;
+        sd.y = value;
+        rt.sizeDelta = sd;
+    }
+    public int OptMainButtonHeight
+    {
+        get => GetHeight(mainButton);
+        set => SetHeight(mainButton, value);
+    }
+
+    // Word data structure
     [System.Serializable]
     public struct WordInfo
     {
@@ -48,6 +78,7 @@ public class DataScript : ScriptableObject
     {
         data = new List<string>(Resources.LoadAll<TextAsset>("Data")
         .Select(e => e.name));
+        LoadPrefabs();
         SetLevel(level);
     }
     public int Level { get => level; }
