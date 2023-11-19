@@ -29,22 +29,31 @@ public class DataScript : ScriptableObject
     // option 3
     public int OptVolume = 10;
 
-    // 1.4
+    // 1.4 
     public Button mainButton;
+    public Toggle mainToggle;
 
     void LoadPrefabs()
     {
-        mainButton = Resources.Load<GameObject>("Prefabs/MainButton")
-        .GetComponent<Button>();
+        mainButton = Resources.Load<GameObject>("Prefabs/MainButton").GetComponent<Button>();
+        mainToggle = Resources.Load<GameObject>("Prefabs/MainToggle").GetComponent<Toggle>();
     }
 
+    // set fontSize
     public int OptMainButtonFontSize
     {
         get => mainButton.GetComponentInChildren<Text>().fontSize;
         set => mainButton.GetComponentInChildren<Text>().fontSize = value;
     }
-    public int GetHeight(Component comp) =>
-    (int)comp.GetComponent<RectTransform>().sizeDelta.y;
+
+    public int OptMainToggleFontSize
+    {
+        get => mainToggle.GetComponentInChildren<Text>().fontSize;
+        set => mainToggle.GetComponentInChildren<Text>().fontSize = value;
+    }
+
+    // set height
+    public int GetHeight(Component comp) => (int)comp.GetComponent<RectTransform>().sizeDelta.y;
     public void SetHeight(Component comp, int value)
     {
         RectTransform rt = comp.GetComponent<RectTransform>();
@@ -52,10 +61,17 @@ public class DataScript : ScriptableObject
         sd.y = value;
         rt.sizeDelta = sd;
     }
+
     public int OptMainButtonHeight
     {
         get => GetHeight(mainButton);
         set => SetHeight(mainButton, value);
+    }
+
+    public int OptMainToggleHeight
+    {
+        get => GetHeight(mainToggle);
+        set => SetHeight(mainToggle, value);
     }
 
     // Word data structure

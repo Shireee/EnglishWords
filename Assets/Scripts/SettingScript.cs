@@ -13,6 +13,7 @@ public class SettingScript : MonoBehaviour
         toggle.isOn = data.OptAudioEnRu;
         toggle.onValueChanged.AddListener(b => data.OptAudioEnRu = b);
         var button4Text = GameObject.Find("4Button").GetComponentInChildren<Text>();
+        var toggle5Text = GameObject.Find("5Toggle").GetComponentInChildren<Text>();
 
         // option 2
         var dropdown = GameObject.Find("2Dropdown").GetComponent<Dropdown>();
@@ -21,6 +22,7 @@ public class SettingScript : MonoBehaviour
         {
             data.OptTopicName = v;
             button4Text.text = data.Topic(0);
+            toggle5Text.text = data.Topic(0);
         });
 
 
@@ -36,10 +38,11 @@ public class SettingScript : MonoBehaviour
         GameObject.Find("3Button").GetComponent<Button>().onClick.AddListener(() =>
          {
              button4Text.text = data.Word(0);
+             toggle5Text.text = data.Word(0);
              data.PlayAudio(0);
          });
 
-        // 1.4
+        // 1.4 button
         var text4 = GameObject.Find("4Text").GetComponent<Text>();
         var button4 = GameObject.Find("4Button").GetComponent<Button>();
         slider = GameObject.Find("4Slider1").GetComponent<Slider>();
@@ -48,7 +51,7 @@ public class SettingScript : MonoBehaviour
         {
             data.OptMainButtonFontSize = (int)v;
             button4Text.fontSize = (int)v;
-            text4.text = Opt4Comment();
+            text4.text = Opt4CommentButton();
         });
 
         slider.value = data.OptMainButtonFontSize;
@@ -58,7 +61,7 @@ public class SettingScript : MonoBehaviour
         {
             data.OptMainButtonHeight = (int)v;
             data.SetHeight(button4, (int)v);
-            text4.text = Opt4Comment();
+            text4.text = Opt4CommentButton();
         });
 
         slider.value = data.OptMainButtonHeight;
@@ -71,14 +74,32 @@ public class SettingScript : MonoBehaviour
             else
                 button4Text.text = data.Word(0);
         });
+
+        // 1.4 toggle
+        var text5 = GameObject.Find("5Text").GetComponent<Text>();
+        var toggle5 = GameObject.Find("5Toggle").GetComponent<Toggle>();
+        slider = GameObject.Find("5Slider1").GetComponent<Slider>();
+        slider.onValueChanged.AddListener(v =>
+        {
+            data.OptMainToggleFontSize = (int)v;
+            toggle5Text.fontSize = (int)v;
+            text5.text = Opt4CommentToggle();
+        });
+
+        slider.value = data.OptMainToggleFontSize;
+        slider = GameObject.Find("5Slider2").GetComponent<Slider>();
+
+        slider.onValueChanged.AddListener(v =>
+        {
+            data.OptMainToggleHeight = (int)v;
+            data.SetHeight(toggle5, (int)v);
+            text5.text = Opt4CommentToggle();
+        });
+
+        slider.value = data.OptMainToggleHeight;
     }
 
-
-    string Opt4Comment() => $" Ўрифт ({data.OptMainButtonFontSize}) и высота " + $"({data.OptMainButtonHeight})\n кнопок в списках:";
-
-
-    void Update()
-    {
-        
-    }
+    // Text transformation 
+    string Opt4CommentButton() => $" Ўрифт ({data.OptMainButtonFontSize}) и высота " + $"({data.OptMainButtonHeight})\n кнопок в списках:";
+    string Opt4CommentToggle() => $" Ўрифт ({data.OptMainToggleFontSize}) и высота " + $"({data.OptMainToggleHeight})\n чекбоксов в списках:";
 }

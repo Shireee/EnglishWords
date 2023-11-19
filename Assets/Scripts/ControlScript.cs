@@ -8,7 +8,6 @@ using UnityEngine;
 public class ControlScript : MonoBehaviour
 {
     public DataScript data;
-    public Toggle mainToggle;
     SortedSet<int> checkedItems;
     Button hRButton;
     Transform togglePanel;
@@ -28,7 +27,7 @@ public class ControlScript : MonoBehaviour
         hRButton = GameObject.Find("HRButton").GetComponent<Button>();
         for (int i = 0; i < data.TopicCount; i++)
         {
-            var t = Instantiate(mainToggle);
+            var t = Instantiate(data.mainToggle);
             t.GetComponentInChildren<Text>().text = data.Topic(i);
             t.transform.SetParent(gameObject.transform);
             t.transform.localScale = Vector2.one;
