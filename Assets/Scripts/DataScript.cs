@@ -415,5 +415,26 @@ public class DataScript : ScriptableObject
         for (int i = 0; i < cnt; i++) results.Add(new TestInfo(PlayerPrefs.GetString($"Results{i}", "")));
     }
 
+    // 1.5
+    public int ResultCount { get => results.Count; }
+    public string TestTypeToString(int testType)
+    {
+        switch (testType)
+        {
+            case 0:
+                return "En-Ru";
+            case 1:
+                return "Ru-En";
+            default:
+                return "Au-Ru";
+        }
+    }
+    public string Result(int i)
+    {
+        var r = results[i];
+        return $"{r.StartTime} {r.Level + 1}:{r.Topics} "
+        + $"{TestTypeToString(r.Type)} {r.Rating * 100:f0}\u00A0[{r.Mark}]";
+    }
+
 }
 

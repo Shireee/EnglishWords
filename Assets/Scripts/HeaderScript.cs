@@ -24,7 +24,6 @@ public class HeaderScript : MonoBehaviour
         if (data != null)
         {
             data.SavePrefs();
-            print("save");
         }
     }
 
