@@ -28,6 +28,12 @@ public class ResultsMenuScript : MenuScript
                 Destroy(content.GetChild(i).gameObject);
             emptyResults = true;
         }
-        if (emptyResults) es.SetSelectedGameObject(GameObject.Find("HLButton"));
+
+        if (emptyResults)
+        {
+            es.SetSelectedGameObject(GameObject.Find("HLButton"));
+            DisableMenuItem(0);
+            DisableMenuItem(1);
+        }
     }
 }

@@ -42,15 +42,23 @@ public class MenuScript : MonoBehaviour
     public void ShowMenu()
     {
         mainCanvasGroup = mainCanvas.GetComponent<CanvasGroup>();
+
         if (mainCanvasGroup == null)
         {
             Debug.LogError("The main canvas doesn't contain the CanvasGroup component.");
             return;
         }
+
         mainCanvasGroup.interactable = false;
         mainSelectedObject = es.currentSelectedGameObject;
         gameObject.SetActive(true);
-        es.SetSelectedGameObject(menuPanel.GetChild(0).gameObject);
+
+        for (int i = 0; i < transform.childCount; i++)
+            if (menuPanel.GetChild(i).GetComponent<Button>().interactable)
+            {
+                es.SetSelectedGameObject(menuPanel.GetChild(i).gameObject);
+                break;
+            }
     }
 
     void CloseMenu()
@@ -64,5 +72,16 @@ public class MenuScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             CloseMenu();
+    }
+
+    public void DisableMenuItem(int index)
+    {
+        if (index < menuPanel.childCount - 1)
+            menuPanel.GetChild(index).GetComponent<Button>().interactable = false;
+    }
+    public void EnableMenuItem(int index)
+    {
+        if (index < menuPanel.childCount - 1)
+            menuPanel.GetChild(index).GetComponent<Button>().interactable = true;
     }
 }
