@@ -11,7 +11,8 @@ public class ResultsScript : MonoBehaviour
         if (data.ResultCount == 0)
             return;
 
-        for (int i = 0; i < data.WordCount; i++)
+        // Bug fix: i < data.WordCount -> i < data.ResultCount
+        for (int i = 0; i < data.ResultCount; i++)
         {
             var b = Instantiate(data.mainButton);
             b.GetComponentInChildren<Text>().text = data.Result(i);

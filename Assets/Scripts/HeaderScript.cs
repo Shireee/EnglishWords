@@ -9,6 +9,9 @@ public class HeaderScript : MonoBehaviour
     Button lBut, rBut;
     int curInd;
     public DataScript data;
+    public Canvas menuCanvas;
+    MenuScript menu;
+    CanvasGroup canvasGroup;
 
 
     void Start()
@@ -16,6 +19,10 @@ public class HeaderScript : MonoBehaviour
         lBut = transform.GetChild(0).GetComponent<Button>();
         rBut = transform.GetChild(1).GetComponent<Button>(); // getting first child !guide error
         curInd = SceneManager.GetActiveScene().buildIndex;
+        canvasGroup = GameObject.Find("Canvas").GetComponent<CanvasGroup>();
+
+        if (menuCanvas != null)
+            menu = menuCanvas.GetComponent<MenuScript>();
     }
 
     // saving preferences
@@ -29,6 +36,10 @@ public class HeaderScript : MonoBehaviour
 
     void Update()
     {
+        // do not nav if we a in the context menu
+        if (!Input.anyKeyDown || canvasGroup != null && !canvasGroup.interactable)
+            return;
+
         if (!Input.anyKeyDown)
             return;
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -63,6 +74,12 @@ public class HeaderScript : MonoBehaviour
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
+        }
+
+        else if (index == -2)
+        {
+            if (menu != null)
+                menu.ShowMenu();
         }
     }
 }
