@@ -436,5 +436,32 @@ public class DataScript : ScriptableObject
         + $"{TestTypeToString(r.Type)} {r.Rating * 100:f0}\u00A0[{r.Mark}]";
     }
 
+    public string CompleteResultInfo(int i)
+    {
+        var r = results[i];
+        return $@"Начало тестирования: {r.StartTime}
+        Вид тестирования: {TestTypeToString(r.Type)}
+        Уровень и темы: {r.Level + 1}:{r.Topics}
+        Количество слов: {r.WordCount}
+        Вопросов в тесте: {r.Questions}
+        Правильных ответов: {r.Answers}
+        Ошибочных ответов: {r.Errors}
+        Рейтинг и оценка: {r.Rating * 100:f1} [{r.Mark}]";
+    }
+
+    // hande delete
+    public void DeleteAllResults()
+    {
+        results.Clear();
+    }
+
+    public void DeleteFirstResult()
+    {
+        if (results.Count > 0)
+        {
+            results.RemoveAt(0);
+        }
+    }
+
 }
 

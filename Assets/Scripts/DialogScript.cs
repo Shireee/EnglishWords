@@ -17,6 +17,7 @@ public class DialogScript : MonoBehaviour
 
     void Start()
     {
+        es = EventSystem.current;
         dialogPanel = transform.GetChild(0).transform;
         for (int i = 0; i < buttons.Length; i++)
             buttons[i] = dialogPanel.GetChild(2).GetChild(i).GetComponent<Button>();

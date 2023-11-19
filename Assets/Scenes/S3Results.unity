@@ -502,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 6f8f5f1f657ba4142bb007f0c0845f5a, type: 2}
+  dialog: {fileID: 57430754}
 --- !u!114 &191644145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,6 +972,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCanvas: {fileID: 781258707}
   menuItem: {fileID: 6397205857469571407, guid: f258c53b566f45241bcd53db3a08ff11, type: 3}
+  dialogCanvas: {fileID: 57430752}
+  data: {fileID: 11400000, guid: 6f8f5f1f657ba4142bb007f0c0845f5a, type: 2}
 --- !u!114 &689654765
 MonoBehaviour:
   m_ObjectHideFlags: 0
